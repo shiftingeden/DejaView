@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DejaView Support</title>
+<meta name="description" content="Help and contact for DejaView, the duplicate video finder for Mac.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1c1c1e;
+    --muted: #6b6b70;
+    --rule: #e3e3e6;
+    --accent: #2f6fd0;
+    --card: #f6f6f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131316;
+      --fg: #ececf0;
+      --muted: #9a9aa2;
+      --rule: #2c2c31;
+      --accent: #7aa9f0;
+      --card: #1c1c21;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 1.75rem; margin-bottom: 2rem; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.02em; }
+  .sub { color: var(--muted); margin: 0; }
+  h2 { font-size: 1.15rem; margin: 2.5rem 0 .75rem; letter-spacing: -.01em; }
+  h3 { font-size: 1rem; margin: 1.6rem 0 .35rem; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin: .4rem 0; }
+  a { color: var(--accent); }
+  .contact {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.25rem 1.35rem;
+    margin: 0;
+  }
+  .contact p { margin: 0; }
+  .contact .addr { font-size: 1.15rem; font-weight: 600; }
+  .meta { color: var(--muted); font-size: .92rem; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .875em;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: .1em .35em;
+  }
+  footer {
+    margin-top: 3.5rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>DejaView Support</h1>
+  <p class="sub">Find duplicate videos by sight — for macOS</p>
+</header>
+
+<div class="contact">
+  <p class="meta">Questions, bug reports, refund queries — write to:</p>
+  <p class="addr"><a href="mailto:TechBitsMix@gmail.com?subject=DejaView%20support">TechBitsMix@gmail.com</a></p>
+  <p class="meta" style="margin-top:.6rem">We read every message and usually reply within two business days.</p>
+</div>
+
+<h2>What DejaView does</h2>
+<p>Ordinary duplicate finders compare names, sizes and checksums, so a 1080p file and its 720p re-encode look completely unrelated to them. DejaView compares what the frames actually show, which lets it match the same footage across different resolutions, formats, trims and black padding — even when the filenames have nothing in common.</p>
+
+<h2>Requirements</h2>
+<ul>
+  <li>macOS 14 (Sonoma) or later</li>
+  <li>Apple silicon or Intel</li>
+  <li>No account, no internet connection needed</li>
+</ul>
+
+<h2>Getting started</h2>
+<ol>
+  <li>Click <strong>Add a Folder</strong> and choose a folder to search. Subfolders are included automatically.</li>
+  <li>Click <strong>Scan for Duplicates</strong>. Groups appear as they are found — you don't have to wait for the whole scan.</li>
+  <li>Open a group to compare every copy at the same moment of the footage, with the detected time offset applied.</li>
+  <li>Review what's selected, then remove it. The full guide is inside the app under <strong>Help &rsaquo; DejaView Guide</strong>.</li>
+</ol>
+
+<h2>Common questions</h2>
+
+<h3>Is anything deleted permanently?</h3>
+<p>No. DejaView never erases a file. Removals go to the Trash, where macOS lets you put them back, or into a quarantine folder beside the original if you prefer that. Every removal is logged first, and one copy in each group is always kept and is never selected for you.</p>
+
+<h3>Why is the first scan slow?</h3>
+<p>Decoding video is thousands of times more expensive than reading a filename. The first pass has to look at the footage itself. Results are cached, so a later scan of the same library is nearly instant, and files that are byte-identical are matched without decoding anything at all.</p>
+
+<h3>Can I stop a long scan and come back to it?</h3>
+<p>Yes. Pause saves a resume point, and you can quit the app entirely. Reopen it and the overview offers the unfinished scan. A resume point is also written every thirty seconds while scanning and when you quit, so a crash or a restart costs at most about half a minute of work — never the whole run.</p>
+
+<h3>A 480p file was picked as the keeper. Why?</h3>
+<p>It shouldn't be, and DejaView actively guards against it: it measures real picture detail so an upscaled copy can't win just because it has more pixels. If you're seeing this, check <strong>Settings &rsaquo; Keeper</strong> — the rule order and the preferred-resolution target are both adjustable, and you may have a target set that prefers a smaller copy. If the settings look right, please write to us with the details.</p>
+
+<h3>Why can't DejaView see one of my folders?</h3>
+<p>The app is sandboxed, so it can only read folders you have explicitly chosen in the folder-picker. Use <strong>Add a Folder</strong> to grant access. If a folder lives on an external drive that wasn't connected at launch, plug it in and add it again.</p>
+
+<h3>It found matches I don't think are duplicates.</h3>
+<p>The matching thresholds are adjustable under <strong>Settings &rsaquo; Matching</strong>. Raising the required containment makes the app stricter. Nothing is removed without your say-so, so a false match costs you nothing but a glance.</p>
+
+<h2>Reporting a problem</h2>
+<p>The most useful thing you can send us is the app's own diagnostics file. In DejaView:</p>
+<ol>
+  <li>Open <strong>Activity Log</strong> from the menu bar (or press &#8984;L).</li>
+  <li>Switch to the <strong>Technical log</strong> tab.</li>
+  <li>Click <strong>Save Diagnostics…</strong> and choose where to save it.</li>
+  <li>Attach that file to your email.</li>
+</ol>
+<p>It contains your settings, the technical log, and the crash report if there is one — which is usually enough to identify the problem without a back-and-forth. It may include the paths of files that were scanned, so have a look at it first if that matters to you. It is never sent anywhere automatically.</p>
+
+<h2>Refunds</h2>
+<p>Purchases go through the App Store, so refunds are handled by Apple rather than by us. Request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. If something isn't working, though, write to us first — we would rather fix it.</p>
+
+<h2>Privacy</h2>
+<p>DejaView collects nothing, transmits nothing, and has no servers. See the <a href="privacy.html">privacy policy</a>.</p>
+
+<footer>
+  DejaView is developed by TechBitsMix.<br>
+  Copyright &copy; 2026 TechBitsMix. All rights reserved.
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — DejaView</title>
+<meta name="description" content="DejaView collects nothing, transmits nothing, and has no servers.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1c1c1e;
+    --muted: #6b6b70;
+    --rule: #e3e3e6;
+    --accent: #2f6fd0;
+    --card: #f6f6f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131316;
+      --fg: #ececf0;
+      --muted: #9a9aa2;
+      --rule: #2c2c31;
+      --accent: #7aa9f0;
+      --card: #1c1c21;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 1.75rem; margin-bottom: 2.25rem; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.02em; }
+  .sub { color: var(--muted); font-size: .95rem; margin: 0; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 .75rem; letter-spacing: -.01em;
+  }
+  p, li { color: var(--fg); }
+  ul { padding-left: 1.25rem; }
+  li { margin: .4rem 0; }
+  a { color: var(--accent); }
+  .lede {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    margin: 0 0 .5rem;
+    font-size: 1.05rem;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .875em;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: .1em .35em;
+    word-break: break-word;
+  }
+  footer {
+    margin-top: 3.5rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>DejaView Privacy Policy</h1>
+  <p class="sub">Last updated 5 September 2026</p>
+</header>
+
+<p class="lede"><strong>DejaView collects no data whatsoever.</strong> It has no servers, no accounts, no analytics and no network access of any kind. Nothing you do in the app is transmitted anywhere, because there is nowhere for it to go.</p>
+
+<h2>What the app does</h2>
+<p>DejaView finds duplicate videos on your Mac by comparing what the frames actually show. All of that analysis happens on your own machine, using your Mac's own processor. Your video files are never uploaded, copied off the device, or shared with anyone, including us.</p>
+
+<h2>Information we collect</h2>
+<p>None. Specifically, DejaView does not collect, receive, transmit or store on our behalf:</p>
+<ul>
+  <li>your name, email address, or any other contact information</li>
+  <li>your files, filenames, folder names, or the contents of any video</li>
+  <li>usage statistics, feature analytics, or crash telemetry</li>
+  <li>identifiers, advertising IDs, or device fingerprints</li>
+  <li>your location</li>
+</ul>
+<p>The app contains no third-party SDKs, no advertising libraries, and no analytics frameworks.</p>
+
+<h2>What is stored on your Mac</h2>
+<p>To do its job and to let an interrupted scan resume, DejaView keeps a few files inside its own sandbox container on your computer:</p>
+<ul>
+  <li><strong>A fingerprint cache</strong> — compact numeric summaries of video frames, so a rescan does not have to decode the same file twice.</li>
+  <li><strong>A session file</strong> — which files a scan had reached, so it can be resumed after a pause, a quit, or a crash.</li>
+  <li><strong>An activity log and a technical log</strong> — a record of scans and removals, and the engine's own diagnostic trail.</li>
+  <li><strong>A removal log</strong> — what was moved to the Trash or quarantine, so removals can be reviewed and undone.</li>
+  <li><strong>Your settings, and bookmarks to the folders you chose</strong> — so the app can reopen those folders next time you launch it.</li>
+</ul>
+<p>These files live in <code>~/Library/Containers/com.techbitsmix.DejaView</code> and never leave your Mac. Deleting the app removes them. You can also clear the cache and the logs from inside the app at any time.</p>
+
+<h2>File access</h2>
+<p>DejaView is sandboxed. It can only read the folders you explicitly choose in the system's folder-picker, and nothing else on your Mac. macOS stores that permission as a security-scoped bookmark so a long scan can be resumed after you quit the app. You can remove any folder from the app's list at any time, which discards the corresponding permission.</p>
+
+<h2>Deleting files</h2>
+<p>DejaView never erases a file outright. Removals are moved to the Trash, where macOS lets you recover them, or into a quarantine folder next to the original if you prefer. Every removal is recorded locally before it happens.</p>
+
+<h2>Diagnostics and support</h2>
+<p>If you write to us for help, you may choose to save a diagnostics file and attach it to your email. That file is created only when you ask for it, saved wherever you choose, and sent only if you decide to send it. It contains your app settings, the technical log, and the crash report if one exists — which can include the paths of files that were scanned. Please look at it before sending it if that concerns you. We use anything you send purely to answer your question, and we do not retain it beyond that.</p>
+
+<h2>Children</h2>
+<p>DejaView is a general-purpose utility rated 4+. It is not directed at children and, since it collects nothing from anyone, it collects nothing from children.</p>
+
+<h2>Changes to this policy</h2>
+<p>If this policy ever changes, the revised version will be posted on this page with a new date at the top. Since the app collects no data, we do not expect material changes.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy, or about privacy in DejaView generally: <a href="mailto:TechBitsMix@gmail.com">TechBitsMix@gmail.com</a></p>
+
+<footer>
+  DejaView is developed by TechBitsMix.<br>
+  Copyright &copy; 2026 TechBitsMix. All rights reserved.
+</footer>
+
+</div>
+</body>
+</html>
