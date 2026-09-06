@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DejaView Support</title>
-<meta name="description" content="Help and contact for DejaView, the duplicate video finder for Mac.">
+<meta name="description" content="DejaView is a duplicate video finder for Mac that compares what the frames show, not bytes — so it finds the same footage across different resolutions, codecs, trims and filenames. Support and FAQ.">
 <style>
   :root {
     --bg: #ffffff;
@@ -51,6 +51,14 @@
   .contact p { margin: 0; }
   .contact .addr { font-size: 1.15rem; font-weight: 600; }
   .meta { color: var(--muted); font-size: .92rem; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .95rem;
+    display: block; overflow-x: auto;
+  }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-weight: 600; font-size: .82rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+  td.no { color: var(--muted); }
+  td.yes { font-weight: 600; }
   code {
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: .875em;
@@ -81,7 +89,26 @@
 </div>
 
 <h2>What DejaView does</h2>
-<p>Ordinary duplicate finders compare names, sizes and checksums, so a 1080p file and its 720p re-encode look completely unrelated to them. DejaView compares what the frames actually show, which lets it match the same footage across different resolutions, formats, trims and black padding — even when the filenames have nothing in common.</p>
+<p><strong>Every other duplicate finder compares bytes. DejaView compares pictures.</strong></p>
+<p>A 1080p film and the 720p copy you made of it share no bytes at all. To a checksum, a hash, or a name-and-size match, they are two unrelated files &mdash; so conventional duplicate finders walk straight past the most common kind of duplicate in a real video library.</p>
+<p>DejaView watches the footage instead. It reduces each video to a fingerprint taken across its whole timeline, then looks for one file&rsquo;s footage inside another&rsquo;s, at any resolution, in any format, starting at any point.</p>
+
+<h2>How is this different from a normal duplicate file finder?</h2>
+<table>
+  <thead><tr><th>The situation</th><th>Byte-matching tools</th><th>DejaView</th></tr></thead>
+  <tbody>
+    <tr><td>Two files that are exactly identical</td><td>Found</td><td>Found &mdash; instantly, without decoding</td></tr>
+    <tr><td>Same film at 1080p and 720p</td><td class="no">Missed</td><td class="yes">Found</td></tr>
+    <tr><td>Re-encoded to a different codec or bitrate</td><td class="no">Missed</td><td class="yes">Found</td></tr>
+    <tr><td>A copy with an intro or black at the front</td><td class="no">Missed</td><td class="yes">Found, with the offset measured</td></tr>
+    <tr><td>A trimmed copy starting partway in</td><td class="no">Missed</td><td class="yes">Found</td></tr>
+    <tr><td>Letterboxed or watermarked copy</td><td class="no">Missed</td><td class="yes">Found</td></tr>
+    <tr><td>Completely different filenames</td><td class="no">Missed</td><td class="yes">Irrelevant &mdash; names are never used</td></tr>
+    <tr><td>Which copy is genuinely sharper</td><td class="no">Guesses by pixel count</td><td class="yes">Measures real picture detail</td></tr>
+  </tbody>
+</table>
+<p>That last row matters more than it sounds. A 480p file upscaled to 1080p has four times the pixels and none of the detail. A tool that ranks by resolution keeps exactly the wrong file; DejaView flags the upscale and demotes it.</p>
+<p>And before anything is removed, you see it for yourself: every copy in a group is shown at the same moment of the footage, with its measured time offset applied, so a trimmed copy and a padded copy line up on screen.</p>
 
 <h2>Requirements</h2>
 <ul>
@@ -104,13 +131,23 @@
 <p>No. DejaView never erases a file. Removals go to the Trash, where macOS lets you put them back, or into a quarantine folder beside the original if you prefer that. Every removal is logged first, and one copy in each group is always kept and is never selected for you.</p>
 
 <h3>Why is the first scan slow?</h3>
-<p>Decoding video is thousands of times more expensive than reading a filename. The first pass has to look at the footage itself. Results are cached, so a later scan of the same library is nearly instant, and files that are byte-identical are matched without decoding anything at all.</p>
+<p>Decoding video is thousands of times more expensive than reading a filename, and the first pass has to look at the footage itself. After that DejaView remembers. Every video it has fingerprinted stays remembered <em>by content rather than by location</em>, so a rescan is nearly instant &mdash; and a copy of a file you scanned months ago is recognised the moment it appears, even under a different name in a different folder. Byte-identical files are matched without decoding anything at all.</p>
 
 <h3>Can I stop a long scan and come back to it?</h3>
-<p>Yes. Pause saves a resume point, and you can quit the app entirely. Reopen it and the overview offers the unfinished scan. A resume point is also written every thirty seconds while scanning and when you quit, so a crash or a restart costs at most about half a minute of work — never the whole run.</p>
+<p>Yes. Pause saves a resume point, and you can quit the app entirely. Reopen it and the overview offers the unfinished scan. A resume point is also written every fifteen seconds throughout a scan and again when you quit, so a crash or a restart costs a few seconds of work rather than the whole run.</p>
 
 <h3>A 480p file was picked as the keeper. Why?</h3>
 <p>It shouldn't be, and DejaView actively guards against it: it measures real picture detail so an upscaled copy can't win just because it has more pixels. If you're seeing this, check <strong>Settings &rsaquo; Keeper</strong> — the rule order and the preferred-resolution target are both adjustable, and you may have a target set that prefers a smaller copy. If the settings look right, please write to us with the details.</p>
+
+<h3>Which video formats are supported?</h3>
+<p>DejaView reads video through macOS itself, so it handles what macOS handles: MP4, M4V, MOV and other QuickTime-compatible files. <strong>Matroska (.mkv), Windows Media (.wmv) and most AVI files cannot be decoded by macOS at all</strong> and are reported as skipped with the reason shown. This is a limitation of the system decoder, not of the matching, and it applies to any Mac app that plays by the App Store&rsquo;s rules.</p>
+<p><strong>What still works on those files:</strong> finding byte-identical copies never decodes anything, so two identical MKVs are still found and grouped, and removing one is safe. What is not possible is comparing an MKV at 1080p against the same film at 720p &mdash; neither can be looked at.</p>
+<p>Note that this is a <em>container</em> problem, not a codec one: the video inside an MKV is usually H.264, which macOS decodes fine. It simply has no demuxer for the Matroska wrapper. If your library is mostly MKV, remuxing to MP4 gets you full matching.</p>
+<h3>Why doesn&rsquo;t DejaView convert those files itself?</h3>
+<p>Because converting a file means decoding it first, and decoding these containers is exactly what macOS cannot do. A built-in converter would fail on precisely the files it was meant to rescue.</p>
+<p>What works is <strong>remuxing</strong> &mdash; repackaging the existing stream into an MP4 container without re-encoding. Where the video inside is already H.264 or HEVC, this is lossless and takes seconds per file:</p>
+<p><code>ffmpeg -i "input.mkv" -c copy "output.mp4"</code></p>
+<p>HandBrake does the same in bulk. DejaView&rsquo;s sidebar has a <strong>Copy List of Files</strong> button that puts the affected paths on your clipboard with that command, so you have something to work from. Scan again afterwards and the converted copies are fully comparable.</p>
 
 <h3>Why can't DejaView see one of my folders?</h3>
 <p>The app is sandboxed, so it can only read folders you have explicitly chosen in the folder-picker. Use <strong>Add a Folder</strong> to grant access. If a folder lives on an external drive that wasn't connected at launch, plug it in and add it again.</p>
