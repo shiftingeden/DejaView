@@ -89,13 +89,13 @@
 </div>
 
 <h2>What DejaView does</h2>
-<p><strong>Every other duplicate finder compares bytes. DejaView compares pictures.</strong></p>
-<p>A 1080p film and the 720p copy you made of it share no bytes at all. To a checksum, a hash, or a name-and-size match, they are two unrelated files &mdash; so conventional duplicate finders walk straight past the most common kind of duplicate in a real video library.</p>
-<p>DejaView watches the footage instead. It reduces each video to a fingerprint taken across its whole timeline, then looks for one file&rsquo;s footage inside another&rsquo;s, at any resolution, in any format, starting at any point.</p>
+<p><strong>Duplicate finders match on checksums, or on name and size. That only works when two files are byte-for-byte identical. DejaView compares the pictures instead.</strong></p>
+<p>A 1080p film and the 720p copy you made of it share no bytes at all. To a checksum they are two unrelated files &mdash; so byte matching walks straight past the most common kind of duplicate in a real video library.</p>
+<p>DejaView reduces each video to a fingerprint across its whole timeline, then looks for one file&rsquo;s footage inside another&rsquo;s &mdash; at any resolution, whatever it was encoded with, and even when the two copies start at different moments.</p>
 
 <h2>How is this different from a normal duplicate file finder?</h2>
 <table>
-  <thead><tr><th>The situation</th><th>Byte-matching tools</th><th>DejaView</th></tr></thead>
+  <thead><tr><th>The situation</th><th>Checksum / name matching</th><th>DejaView</th></tr></thead>
   <tbody>
     <tr><td>Two files that are exactly identical</td><td>Found</td><td>Found &mdash; instantly, without decoding</td></tr>
     <tr><td>Same film at 1080p and 720p</td><td class="no">Missed</td><td class="yes">Found</td></tr>
@@ -154,6 +154,17 @@
 
 <h3>It found matches I don't think are duplicates.</h3>
 <p>The matching thresholds are adjustable under <strong>Settings &rsaquo; Matching</strong>. Raising the required containment makes the app stricter. Nothing is removed without your say-so, so a false match costs you nothing but a glance.</p>
+
+<h2>What DejaView does not do</h2>
+<p>Straight about the limits, because a tool that deletes files should not surprise you.</p>
+<ul>
+  <li><strong>Formats.</strong> MP4, M4V, MOV and other QuickTime-compatible files. MKV, WMV and most AVI cannot be opened by macOS at all &mdash; those are still checked for byte-identical copies, but cannot be compared by picture.</li>
+  <li><strong>It never matches on filenames.</strong> Similar names are not treated as evidence of anything.</li>
+  <li><strong>Copies starting more than ten minutes apart</strong> are not matched by default. The window is adjustable under Settings &rsaquo; Alignment.</li>
+  <li><strong>Files under 1&nbsp;MB, shorter than 4 seconds, and iCloud files not downloaded to this Mac</strong> are skipped. All three are adjustable under Settings &rsaquo; Scanning.</li>
+  <li><strong>It does not convert, re-encode or edit anything.</strong> It finds and removes; that is all.</li>
+  <li><strong>Video only.</strong> Not photos, music or documents.</li>
+</ul>
 
 <h2>Reporting a problem</h2>
 <p>The most useful thing you can send us is the app's own diagnostics file. In DejaView:</p>
